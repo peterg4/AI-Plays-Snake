@@ -7,8 +7,11 @@ let food;
 let w;
 let h;
 
+var counter;
+var generationCount = 0;
 function setup() {
   createCanvas(600, 600);
+  counter = createP('Generation: 0')
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(24);
@@ -33,18 +36,21 @@ function draw() {
 
   let k = 0;
   for (let snake of snakePopulation) {
-    snake.eat();
+    
     snake.think();
+    
     snake.update();
     if(snake.endGame() || snake.age > snake.lifespan) {
       savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
-    
+    snake.eat();
     k++;
   }
 
   if (snakePopulation.length === 0) {
     nextGeneration();
+    generationCount++;
+    counter.html('Generation: '+ generationCount);
   }
 
   for (let snake of snakePopulation) {

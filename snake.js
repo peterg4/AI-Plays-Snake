@@ -52,8 +52,12 @@ class Snake {
   update() {
     this.age++;
     let head = this.body[this.body.length-1].copy();
-    if(this.prevDist > dist(head.x, head.y, this.food.x, this.food.y))
+    if(this.prevDist > dist(head.x, head.y, this.food.x, this.food.y)) {
       this.score++;
+    } else { 
+      this.score-=2;
+    }
+    this.prevDist = dist(head.x, head.y, this.food.x, this.food.y);
     this.body.shift();
     head.x += this.xVelocity;
     head.y += this.yVelocity;
@@ -61,7 +65,7 @@ class Snake {
   }
   
   grow() {
-    this.foodLocation();
+    this.food = this.foodLocation();
     this.score+=1000;
     this.lifespan+=100;
   	let head = this.body[this.body.length-1].copy();
