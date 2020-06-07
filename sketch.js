@@ -1,4 +1,4 @@
-const snakeCount = 4;
+const snakeCount = 100;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -11,7 +11,7 @@ function setup() {
   createCanvas(600, 600);
   w = floor(width / rez);
   h = floor(height / rez);
-  frameRate(10);
+  frameRate(30);
   tf.setBackend('cpu');
   var button = createButton('Restart');
   button.mousePressed(restart);

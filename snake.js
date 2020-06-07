@@ -32,6 +32,7 @@ class Snake {
   }
   
   update() {
+    this.score++;
   	let head = this.body[this.body.length-1].copy();
     this.body.shift();
     head.x += this.xVelocity;
@@ -40,7 +41,7 @@ class Snake {
   }
   
   grow() {
-    this.score++;
+    this.score+=100;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
