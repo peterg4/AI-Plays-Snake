@@ -1,9 +1,9 @@
 function nextGeneration() {
   calculateFitness();
-  for (let i = 0; i < TOTAL; i++) {
+  for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = pickOne();
   }
-  for (let i = 0; i < TOTAL; i++) {
+  for (let i = 0; i < snakeCount; i++) {
     savedSnakes[i].dispose();
   }
   savedSnakes = [];
@@ -18,7 +18,7 @@ function pickOne() {
   }
   index--;
   let snake = savedSnakes[index];
-  let child = new Bird(bird.brain);
+  let child = new Snake(snake.brain);
   child.mutate();
   return child;
 }

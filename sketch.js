@@ -1,4 +1,4 @@
-const snakeCount = 1;
+const snakeCount = 4;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -48,7 +48,7 @@ function draw() {
   scale(rez);
   background(220);
 
-
+  let k = 0;
   for (let snake of snakePopulation) {
     snake.think(food);
     snake.update();
@@ -56,8 +56,9 @@ function draw() {
       foodLocation();
     }
     if(snake.endGame()) {
-      savedSnakes.push(snakePopulation.splice()[0]);
+      savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
+    k++;
   }
 
   if (snakePopulation.length === 0) {
