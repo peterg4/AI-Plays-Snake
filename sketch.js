@@ -36,7 +36,7 @@ function draw() {
     snake.think();
     snake.update();
     snake.eat(snake.food);
-    if(snake.endGame() || snake.age/snake.score > 2) {
+    if(snake.endGame() || snake.age > snake.lifespan) {
       savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
     k++;
@@ -46,12 +46,13 @@ function draw() {
     nextGeneration();
   }
 
-
   for (let snake of snakePopulation) {
-    snake.show();
-    noStroke();
-    fill(255, 0, 0);
-    rect(snake.food.x, snake.food.y, 1, 1);
+      noStroke();
+      fill(snake.r, snake.g, snake.b);
+      snake.show();
+      noStroke();
+      fill(snake.r, snake.g, snake.b);
+      rect(snake.food.x, snake.food.y, 1, 1);
   }
 
 
