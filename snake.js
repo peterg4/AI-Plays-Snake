@@ -1,11 +1,19 @@
 class Snake {
   
-  constructor() {
+  constructor(brain) {
   	this.body = [];
     this.body[0] = createVector(floor(w/2), floor(h/2));
     this.xVelocity = 0;
     this.yVelocity = 0;
     this.len = 0;
+
+    this.score = 0;
+    this.fitness = 0;
+    if (brain) {
+      this.brain = brain.copy();
+    } else {
+      this.brain = new NeuralNetwork(5, 8, 4); //x,y head, x,y food, len
+    }
   }
   
   setVelocity(x, y) {
@@ -54,6 +62,20 @@ class Snake {
     return false;
   }
   
+
+  think(food) {
+    let inputs = [];
+    inputs[0] = this.y / height;
+    inputs[1] = food.y / height;
+    inputs[2] = food.x / width;
+    inputs[3] = this.x / width;
+    inputs[4] = this.len;
+    let output = this.brain.predict(inputs);
+    if (output[0] > output[1]) {
+      this.up();
+    }
+  }
+
   show() {
   	for(let i = 0; i < this.body.length; i++) {
     	fill(0);
