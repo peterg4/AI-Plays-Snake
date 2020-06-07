@@ -17,7 +17,7 @@ function pickOne() {
     index++;
   }
   index--;
-  let snake = savedSnakes[index];
+  let snake = savedSnakes[snakeCount-1];
   let child = new Snake(snake.brain);
   child.mutate();
   return child;

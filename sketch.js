@@ -1,4 +1,4 @@
-const snakeCount = 250;
+const snakeCount = 300;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -11,7 +11,7 @@ function setup() {
   createCanvas(600, 600);
   w = floor(width / rez);
   h = floor(height / rez);
-  frameRate(30);
+  frameRate(24);
   tf.setBackend('cpu');
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = new Snake();
@@ -35,10 +35,10 @@ function draw() {
   for (let snake of snakePopulation) {
     snake.think();
     snake.update();
-    snake.eat(snake.food);
     if(snake.endGame() || snake.age > snake.lifespan) {
       savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
+    snake.eat();
     k++;
   }
 

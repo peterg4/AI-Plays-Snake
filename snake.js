@@ -15,7 +15,7 @@ class Snake {
 
     this.food = this.foodLocation();
 
-    this.lifespan = 300;
+    this.lifespan = 200;
     this.age = 0;
     this.score = 0;
     this.fitness = 0;
@@ -62,7 +62,7 @@ class Snake {
   grow() {
     this.foodLocation();
     this.score+=1000;
-    this.lifespan+=300;
+    this.lifespan+=100;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
@@ -83,10 +83,12 @@ class Snake {
     return false;
   }
   
-  eat(pos) {
+  eat() {
   	let x = this.body[this.body.length-1].x;
     let y = this.body[this.body.length-1].y;
-    if(x == pos.x && y == pos.y) {
+   
+    if(x == this.food.x && y == this.food.y) {
+      console.log('EAting');
       this.grow();
       return true;
     }
