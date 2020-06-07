@@ -1,4 +1,4 @@
-const snakeCount = 100;
+const snakeCount = 250;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -13,19 +13,9 @@ function setup() {
   h = floor(height / rez);
   frameRate(30);
   tf.setBackend('cpu');
-  var button = createButton('Restart');
-  button.mousePressed(restart);
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = new Snake();
   }
-  foodLocation();
-}
-
-function foodLocation() {
-  let x = floor(random(w));
-  let y = floor(random(h));
-  food = createVector(x, y);
-
 }
 
 function keyPressed() {
@@ -37,42 +27,32 @@ function keyPressed() {
   }
 }
 
-function restart() {
-  snake = new Snake();
-  foodLocation()
-  background(220);
-  loop();
-}
-
 function draw() {
   scale(rez);
   background(220);
 
   let k = 0;
   for (let snake of snakePopulation) {
-    snake.think(food);
+    snake.think();
     snake.update();
-    if (snake.eat(food)) {
-      foodLocation();
-    }
-    if(snake.endGame()) {
+    snake.eat(snake.food);
+    if(snake.endGame() || snake.age/snake.score > 2) {
       savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
     k++;
   }
 
   if (snakePopulation.length === 0) {
-    counter = 0;
     nextGeneration();
-    pipes = [];
   }
 
 
   for (let snake of snakePopulation) {
     snake.show();
+    noStroke();
+    fill(255, 0, 0);
+    rect(snake.food.x, snake.food.y, 1, 1);
   }
 
-  noStroke();
-  fill(255, 0, 0);
-  rect(food.x, food.y, 1, 1);
+
 }

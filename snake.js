@@ -7,15 +7,26 @@ class Snake {
     this.yVelocity = 0;
     this.len = 0;
 
+
+    this.food = this.foodLocation();
+
+    this.age = 0;
     this.score = 0;
     this.fitness = 0;
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(5, 8, 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(5, 100, 4); //x,y head, x,y food, len
     }
   }
   
+  foodLocation() {
+    let x = floor(random(w));
+    let y = floor(random(h));
+    return createVector(x, y);
+  
+  }
+
   dispose() {
     this.brain.dispose();
   }
@@ -32,7 +43,9 @@ class Snake {
   }
   
   update() {
-    this.score++;
+    this.age++;
+    if(this.score < 100)
+      this.score++;
   	let head = this.body[this.body.length-1].copy();
     this.body.shift();
     head.x += this.xVelocity;
@@ -41,7 +54,8 @@ class Snake {
   }
   
   grow() {
-    this.score+=100;
+    this.foodLocation();
+    this.score+=1000*this.age;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
@@ -73,13 +87,13 @@ class Snake {
   }
   
 
-  think(food) {
+  think() {
     let inputs = [];
     let head = this.body[this.body.length-1].copy();
-    inputs[0] = head.y / height;
-    inputs[1] = food.y / height;
-    inputs[2] = food.x / width;
-    inputs[3] = head.x / width;
+    inputs[0] = head.y;
+    inputs[1] = this.food.y;
+    inputs[2] = this.food.x;
+    inputs[3] = head.x;
     inputs[4] = this.len;
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
