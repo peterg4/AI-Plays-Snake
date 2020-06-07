@@ -40,6 +40,7 @@ class Snake {
   }
   
   grow() {
+    this.score++;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
@@ -61,7 +62,6 @@ class Snake {
   }
   
   eat(pos) {
-    this.score++;
   	let x = this.body[this.body.length-1].x;
     let y = this.body[this.body.length-1].y;
     if(x == pos.x && y == pos.y) {
@@ -74,19 +74,19 @@ class Snake {
 
   think(food) {
     let inputs = [];
-    inputs[0] = this.y / height;
+    let head = this.body[this.body.length-1].copy();
+    inputs[0] = head.y / height;
     inputs[1] = food.y / height;
     inputs[2] = food.x / width;
-    inputs[3] = this.x / width;
+    inputs[3] = head.x / width;
     inputs[4] = this.len;
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
-   // console.log(choice, output);
     switch(choice) {
-      case output[0]: snake.setVelocity(-1, 0); break;
-      case output[1]: snake.setVelocity(1, 0); break;
-      case output[2]: snake.setVelocity(0, -1); break;
-      case output[3]: snake.setVelocity(0, 1); break;
+      case output[0]: this.setVelocity(-1, 0); break;
+      case output[1]: this.setVelocity(1, 0); break;
+      case output[2]: this.setVelocity(0, -1); break;
+      case output[3]: this.setVelocity(0, 1); break;
     }
   }
 
