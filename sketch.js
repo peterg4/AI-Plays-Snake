@@ -15,7 +15,9 @@ function setup() {
   tf.setBackend('cpu');
   var button = createButton('Restart');
   button.mousePressed(restart);
-  snake = new Snake();
+  for (let i = 0; i < snakeCount; i++) {
+    snakePopulation[i] = new Snake();
+  }
   foodLocation();
 }
 
@@ -45,16 +47,28 @@ function restart() {
 function draw() {
   scale(rez);
   background(220);
-  if (snake.eat(food)) {
-    foodLocation();
+
+
+  for (let snake of snakePopulation) {
+    snake.think(food);
+    snake.update();
+    if (snake.eat(food)) {
+      foodLocation();
+    }
+    if(snake.endGame()) {
+      savedSnakes.push(snakePopulation.splice()[0]);
+    }
   }
-  snake.update();
-  snake.show();
+
+  if (snakePopulation.length === 0) {
+    counter = 0;
+    nextGeneration();
+    pipes = [];
+  }
 
 
-  if (snake.endGame()) {
-    background(255, 0, 0);
-    noLoop();
+  for (let snake of snakePopulation) {
+    snake.show();
   }
 
   noStroke();

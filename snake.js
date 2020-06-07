@@ -20,6 +20,10 @@ class Snake {
     this.brain.dispose();
   }
 
+  mutate() {
+    this.brain.mutate(0.1);
+  }
+
   setVelocity(x, y) {
     if(Math.abs(x - this.xVelocity) != 2 &&  Math.abs(y - this.yVelocity) != 2) {
       this.xVelocity = x;
@@ -57,6 +61,7 @@ class Snake {
   }
   
   eat(pos) {
+    this.score++;
   	let x = this.body[this.body.length-1].x;
     let y = this.body[this.body.length-1].y;
     if(x == pos.x && y == pos.y) {
@@ -75,8 +80,13 @@ class Snake {
     inputs[3] = this.x / width;
     inputs[4] = this.len;
     let output = this.brain.predict(inputs);
-    if (output[0] > output[1]) {
-      this.up();
+    let choice = Math.max(output[0], output[1], output[2], output[3]);
+   // console.log(choice, output);
+    switch(choice) {
+      case output[0]: snake.setVelocity(-1, 0); break;
+      case output[1]: snake.setVelocity(1, 0); break;
+      case output[2]: snake.setVelocity(0, -1); break;
+      case output[3]: snake.setVelocity(0, 1); break;
     }
   }
 
