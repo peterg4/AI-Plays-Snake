@@ -9,6 +9,7 @@ class Snake {
     this.yVelocity = 0;
     this.len = 0;
 
+    this.prevDist = 10000;
     this.r = floor(random(255));
     this.g = floor(random(255));
     this.b = floor(random(255));
@@ -50,9 +51,9 @@ class Snake {
   
   update() {
     this.age++;
-    if(this.score < 100)
+    let head = this.body[this.body.length-1].copy();
+    if(this.prevDist > dist(head.x, head.y, this.food.x, this.food.y))
       this.score++;
-  	let head = this.body[this.body.length-1].copy();
     this.body.shift();
     head.x += this.xVelocity;
     head.y += this.yVelocity;

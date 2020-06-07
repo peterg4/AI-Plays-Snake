@@ -33,12 +33,13 @@ function draw() {
 
   let k = 0;
   for (let snake of snakePopulation) {
+    snake.eat();
     snake.think();
     snake.update();
     if(snake.endGame() || snake.age > snake.lifespan) {
       savedSnakes.push(snakePopulation.splice(k, 1)[0]);
     }
-    snake.eat();
+    
     k++;
   }
 
