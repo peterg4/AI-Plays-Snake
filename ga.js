@@ -1,5 +1,5 @@
 function nextGeneration() {
-  console.log(pickOne());
+  
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = pickOne();
   }

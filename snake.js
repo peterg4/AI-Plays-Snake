@@ -3,8 +3,6 @@ class Snake {
   constructor(brain) {
   	this.body = [];
     this.body[0] = createVector(floor(w/2), floor(h/2));
-    this.grow();
-    this.grow();
     this.xVelocity = 0;
     this.yVelocity = 0;
     this.len = 0;
