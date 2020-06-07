@@ -16,6 +16,10 @@ class Snake {
     }
   }
   
+  dispose() {
+    this.brain.dispose();
+  }
+
   setVelocity(x, y) {
     if(Math.abs(x - this.xVelocity) != 2 &&  Math.abs(y - this.yVelocity) != 2) {
       this.xVelocity = x;

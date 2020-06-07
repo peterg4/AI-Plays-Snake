@@ -1,3 +1,6 @@
+const snakeCount = 1;
+let snakePopulation = [];
+let savedSnakes = [];
 let snake;
 let rez = 20;
 let food;
@@ -9,6 +12,7 @@ function setup() {
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(10);
+  tf.setBackend('cpu');
   var button = createButton('Restart');
   button.mousePressed(restart);
   snake = new Snake();
