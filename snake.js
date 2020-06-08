@@ -20,7 +20,7 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(7, 24, 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(7, 9, 4); //x,y head, x,y food, len
     }
   }
   
@@ -71,7 +71,7 @@ class Snake {
     this.food = this.foodLocation();
     this.prevDist = 1000;
     this.score+=100;
-    this.lifespan+=100;
+    this.lifespan+=10000;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
