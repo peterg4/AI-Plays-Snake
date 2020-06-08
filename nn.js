@@ -42,7 +42,7 @@ class NeuralNetwork {
         for (let j = 0; j < values.length; j++) {
           if (random(1) < rate) {
             let w = values[j];
-            values[j] = w + randomGaussian();
+            values[j] = w + random(-1,1);
           }
         }
         let newTensor = tf.tensor(values, shape);

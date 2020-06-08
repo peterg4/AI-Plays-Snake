@@ -20,14 +20,15 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(7, 9, 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(8, 10, 4); //x,y head, x,y food, len
     }
   }
   
   foodLocation() {
     let x = floor(random(w));
     let y = floor(random(h));
-    for(let part in this.body) {
+    for(let i = 0; i < this.body.length-1; i++) {
+      let part = this.body[i];
       if(part.x==x && part.y == y)
         return this.foodLocation();
       else 
@@ -42,7 +43,7 @@ class Snake {
   }
 
   mutate() {
-    this.brain.mutate(0.13);
+    this.brain.mutate(0.10);
   }
 
   setVelocity(x, y) {
@@ -105,30 +106,39 @@ class Snake {
   }
   
   checkTail(direction) {
+    let part;
     let head = this.body[this.body.length-1].copy();
     switch (direction) {
       case 0: 
-      for(let part in this.body) {
-        if(part!=head && head.x==part.x && head.y-1==part.y)
+      for(let i = 0; i < this.body.length-1; i++) {
+        part = this.body[i];
+        if(part!=head && head.x==part.x && head.y-1==part.y) {
           return false;
+        }
       }
       return true;
       case 1:
-      for(let part in this.body) {
-        if(part!=head && head.x==part.x && head.y+1==part.y)
+      for(let i = 0; i < this.body.length-1; i++) {
+        part = this.body[i];
+        if(part!=head && head.x==part.x && head.y+1==part.y) {
           return false;
+        }
       }
       return true;
       case 2:
-      for(let part in this.body) {
-        if(part!=head && head.y==part.y && head.x+1==part.x)
+      for(let i = 0; i < this.body.length-1; i++) {
+          part = this.body[i];
+        if(part!=head && head.y==part.y && head.x+1==part.x) {
           return false;
+        }
       }
       return true;
       case 3:
-      for(let part in this.body) {
-        if(part!=head && head.y==part.y && head.x-1==part.x)
+      for(let i = 0; i < this.body.length-1; i++) {
+          part = this.body[i];
+        if(part!=head && head.y==part.y && head.x-1==part.x) {
           return false;
+        }
       }
       return true;
     }
@@ -147,7 +157,8 @@ class Snake {
     inputs[4] = head.y > 0 && this.checkTail(1);
     inputs[5] = head.x < w-1 && this.checkTail(2);
     inputs[6] = head.x > 0 && this.checkTail(3);
-    
+    inputs[7] = this.len;
+
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
     switch(choice) {
