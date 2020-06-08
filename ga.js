@@ -1,5 +1,10 @@
 function nextGeneration() {
   getAverageFit();
+  updateChart(generationCount);
+  dps.push({
+    x: generationCount+1,
+    y: averageFitness
+  })
   savedSnakes.sort((a, b) => (a.score > b.score) ? 1 : -1);
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = pickOne();

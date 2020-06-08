@@ -92,7 +92,6 @@ class Snake {
     let y = this.body[this.body.length-1].y;
    
     if(x == this.food.x && y == this.food.y) {
-      console.log('EAting');
       this.grow();
       return true;
     }

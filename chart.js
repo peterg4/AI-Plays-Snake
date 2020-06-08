@@ -1,0 +1,29 @@
+var dps = [{x: 0, y:0}]; // dataPoints
+var chart = new CanvasJS.Chart("chart-container", {
+  title :{
+    fontFamily: "'Open Sans', sans-serif",
+    text: "Average Fitness by Generation"
+  },
+  axisY: {
+    includeZero: false
+  },      
+  data: [{
+    type: "line",
+    dataPoints: dps
+  }]
+});
+
+var xVal = 0;
+var yVal = 100; 
+var dataLength = 20; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+
+  count = count || 1;
+
+  if (dps.length > dataLength) {
+    dps.shift();
+  }
+
+  chart.render();
+};

@@ -16,7 +16,7 @@ var counter;
 var generationCount = 0;
 
 function setup() {
-  createCanvas(600, 600).parent('canvas-container');
+  createCanvas(600, windowHeight).parent('canvas-container');
   counter = createP('Generation: 0')
   counter.parent('data-container');
   bestFitDisplay = createP('Best Fitness: 0');
@@ -61,7 +61,7 @@ function draw() {
     generationCount++;
     counter.html('Generation: '+ generationCount);
     bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
-    createP('Average Fitness: ' + averageFitness.toFixed(2)).parent('data-container');
+    //createP('Average Fitness: ' + averageFitness.toFixed(2)).parent('data-container');
 
   }
 
