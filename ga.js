@@ -20,12 +20,11 @@ function pickOne() {
 }
 
 function getAverageFit(){
-  average_fit = 0;
+  averageFitness = 0;
   for (let i = 0; i < snakeCount; i++) {
-    average_fit += savedSnakes[i].score;
-    if(savedSnakes[i].score > best_fit)
-      best_fit = savedSnakes[i].score;
+    averageFitness += savedSnakes[i].score;
+    if(savedSnakes[i].score > bestFitness)
+    bestFitness = savedSnakes[i].score;
   }
-  average_fit/=snakeCount;
-  console.log(average_fit, best_fit);
+  averageFitness/=snakeCount;
 }

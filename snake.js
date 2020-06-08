@@ -20,7 +20,7 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(6, 24, 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(7, 24, 4); //x,y head, x,y food, len
     }
   }
   
@@ -99,21 +99,20 @@ class Snake {
     return false;
   }
   
-
   think() {
     let inputs = [];
     let head = this.body[this.body.length-1].copy();
 
-    //right - food, wall, tail
+    //food location
     inputs[0] = this.food.y < head.y;
     inputs[1] = this.food.x < head.x;
     inputs[2] = this.food.x > head.x;
-    //up
-    inputs[3] = head.y < h-1;
-    //left
-    inputs[4] = head.x < w-1;
-    //dow
-    inputs[5] = head.x > 0;
+    //wall/tails
+    inputs[3] = head.y < h-1; 
+    inputs[4] = head.y > 0;
+    inputs[5] = head.x < w-1;
+    inputs[6] = head.x > 0;
+    
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
     switch(choice) {

@@ -6,15 +6,18 @@ let rez = 20;
 let food;
 let w;
 let h;
-let average_fit = 0;
-let best_fit = 0;
-//prit ax score
+let averageFitness = 0;
+let bestFitness = 0;
 
+
+var bestFitDisplay;
+var averageFitDisplay;
 var counter;
 var generationCount = 0;
 function setup() {
   createCanvas(600, 600);
   counter = createP('Generation: 0')
+  bestFitDisplay = createP('Best Fitness: 0');
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(24);
@@ -54,6 +57,8 @@ function draw() {
     nextGeneration();
     generationCount++;
     counter.html('Generation: '+ generationCount);
+    bestFitDisplay.html('Best Fitness: ' + bestFitness);
+    createP('Average Fitness: ' + averageFitness);
   }
 
   for (let snake of snakePopulation) {
