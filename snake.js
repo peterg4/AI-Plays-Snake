@@ -64,7 +64,7 @@ class Snake {
   grow() {
     this.food = this.foodLocation();
     this.prevDist = 1000;
-    this.score+=100*this.len;
+    this.score+=100;
     this.lifespan+=100;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
