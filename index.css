@@ -4,3 +4,7 @@ body{
 #data-container{
   margin-left: 12px;
 }
+#chart-container{
+  width: calc(100% - 800px);
+  height: calc(100% - 100px);
+}

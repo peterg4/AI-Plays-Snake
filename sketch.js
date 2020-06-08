@@ -16,7 +16,7 @@ var counter;
 var generationCount = 0;
 
 function setup() {
-  createCanvas(600, windowHeight).parent('canvas-container');
+  createCanvas(700, 700).parent('canvas-container');
   counter = createP('Generation: 0')
   counter.parent('data-container');
   bestFitDisplay = createP('Best Fitness: 0');

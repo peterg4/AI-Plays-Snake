@@ -1,5 +1,8 @@
 var dps = [{x: 0, y:0}]; // dataPoints
 var chart = new CanvasJS.Chart("chart-container", {
+  animationEnabled: true,
+  zoomEnabled:true,
+  theme: "light2",
   title :{
     fontFamily: "'Open Sans', sans-serif",
     text: "Average Fitness by Generation"
