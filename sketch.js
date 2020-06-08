@@ -6,6 +6,9 @@ let rez = 20;
 let food;
 let w;
 let h;
+let average_fit = 0;
+let best_fit = 0;
+//prit ax score
 
 var counter;
 var generationCount = 0;

@@ -1,5 +1,6 @@
 function nextGeneration() {
-  
+  getAverageFit();
+  savedSnakes.sort((a, b) => (a.score > b.score) ? 1 : -1);
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = pickOne();
   }
@@ -10,8 +11,21 @@ function nextGeneration() {
 }
 
 function pickOne() {
-  let snake = savedSnakes[snakeCount-1];
-  let child = new Snake(snake.brain);
+  let snake1 = savedSnakes[snakeCount-floor(random(1,30))];
+  let snake2 = savedSnakes[snakeCount-2];
+ // console.log(savedSnakes[snakeCount-floor(random(1,30))]);
+  let child = new Snake(snake1.brain);
   child.mutate();
   return child;
+}
+
+function getAverageFit(){
+  average_fit = 0;
+  for (let i = 0; i < snakeCount; i++) {
+    average_fit += savedSnakes[i].score;
+    if(savedSnakes[i].score > best_fit)
+      best_fit = savedSnakes[i].score;
+  }
+  average_fit/=snakeCount;
+  console.log(average_fit, best_fit);
 }
