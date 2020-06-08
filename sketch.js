@@ -19,7 +19,7 @@ let cycleCount = 1;
 let cycleSlider;
 
 function setup() {
-  createCanvas(700, 700).parent('canvas-container');
+  createCanvas(400, 400).parent('canvas-container');
   counter = createP('Generation: 0')
   counter.parent('canvas-container');
   bestFitDisplay = createP('Best Fitness: 0');
@@ -47,7 +47,7 @@ function keyPressed() {
 
 function draw() {
   scale(rez);
-  background(220);
+  background(255);
 
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
@@ -68,7 +68,6 @@ function draw() {
       generationCount++;
       counter.html('Generation: '+ generationCount);
       bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
-      //createP('Average Fitness: ' + averageFitness.toFixed(2)).parent('data-container');
 
     }
 

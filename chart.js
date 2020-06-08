@@ -11,14 +11,14 @@ var chart = new CanvasJS.Chart("chart-container", {
     includeZero: false
   },      
   data: [{
-    type: "line",
+    type: "spline",
     dataPoints: dps
   }]
 });
 
 var xVal = 0;
 var yVal = 100; 
-var dataLength = 20; // number of dataPoints visible at any point
+var dataLength = 100; // number of dataPoints visible at any point
 
 var updateChart = function (count) {
 

@@ -20,7 +20,7 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(8, 10, 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(8, floor(random(5,20)), 4); //x,y head, x,y food, len
     }
   }
   
