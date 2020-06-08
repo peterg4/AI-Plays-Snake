@@ -8,8 +8,9 @@ let w;
 let h;
 let averageFitness = 0;
 let bestFitness = 0;
+let bestLength = 0;
 
-
+var bestLengthDisplay;
 var bestFitDisplay;
 var averageFitDisplay;
 var counter;
@@ -20,11 +21,9 @@ let cycleSlider;
 
 function setup() {
   createCanvas(400, 400).parent('canvas-container');
-  counter = createP('Generation: 0')
-  counter.parent('canvas-container');
-  bestFitDisplay = createP('Best Fitness: 0');
-  bestFitDisplay.parent('canvas-container');
-
+  counter = createP('Generation: 0').parent('canvas-container');
+  bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
+  bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
   cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
 
   w = floor(width / rez);
@@ -67,7 +66,7 @@ function draw() {
       generationCount++;
       counter.html('Generation: '+ generationCount);
       bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
-
+      bestLengthDisplay.html('Best Length: ' + bestLength);
     }
 
     for (let snake of snakePopulation) {

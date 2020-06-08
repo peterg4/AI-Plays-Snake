@@ -30,6 +30,8 @@ function getAverageFit(){
     averageFitness += savedSnakes[i].score;
     if(savedSnakes[i].score > bestFitness)
       bestFitness = savedSnakes[i].score;
+    if(savedSnakes[i].len > bestLength)
+      bestLength = savedSnakes[i].len;
   }
   averageFitness/=snakeCount;
 }
