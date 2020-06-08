@@ -48,7 +48,6 @@ function keyPressed() {
 function draw() {
   scale(rez);
   background(255);
-
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
     for (let snake of snakePopulation) {

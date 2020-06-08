@@ -25,8 +25,8 @@ class Snake {
   }
   
   foodLocation() {
-    let x = floor(random(w));
-    let y = floor(random(h));
+    let x = floor(random(w-1));
+    let y = floor(random(h-1));
     for(let i = 0; i < this.body.length-1; i++) {
       let part = this.body[i];
       if(part.x==x && part.y == y)
@@ -71,7 +71,7 @@ class Snake {
   grow() {
     this.food = this.foodLocation();
     this.prevDist = 1000;
-    this.score+=100;
+    this.score+=1000;
     this.lifespan+=10000;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
