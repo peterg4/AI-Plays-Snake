@@ -27,7 +27,13 @@ class Snake {
   foodLocation() {
     let x = floor(random(w));
     let y = floor(random(h));
-    return createVector(x, y);
+    for(let part in this.body) {
+      if(part.x==x && part.y == y)
+        return this.foodLocation();
+      else 
+        return createVector(x, y);
+    } 
+    
   
   }
 

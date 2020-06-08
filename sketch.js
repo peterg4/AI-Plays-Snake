@@ -25,7 +25,7 @@ function setup() {
   bestFitDisplay = createP('Best Fitness: 0');
   bestFitDisplay.parent('canvas-container');
 
-  cycleSlider = createSlider(1,50, 1, 1);
+  cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
 
   w = floor(width / rez);
   h = floor(height / rez);
