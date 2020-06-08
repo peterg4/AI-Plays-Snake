@@ -99,6 +99,36 @@ class Snake {
     return false;
   }
   
+  checkTail(direction) {
+    let head = this.body[this.body.length-1].copy();
+    switch (direction) {
+      case 0: 
+      for(let part in this.body) {
+        if(part!=head && head.x==part.x && head.y-1==part.y)
+          return false;
+      }
+      return true;
+      case 1:
+      for(let part in this.body) {
+        if(part!=head && head.x==part.x && head.y+1==part.y)
+          return false;
+      }
+      return true;
+      case 2:
+      for(let part in this.body) {
+        if(part!=head && head.y==part.y && head.x+1==part.x)
+          return false;
+      }
+      return true;
+      case 3:
+      for(let part in this.body) {
+        if(part!=head && head.y==part.y && head.x-1==part.x)
+          return false;
+      }
+      return true;
+    }
+  }
+
   think() {
     let inputs = [];
     let head = this.body[this.body.length-1].copy();
@@ -108,10 +138,10 @@ class Snake {
     inputs[1] = this.food.x < head.x;
     inputs[2] = this.food.x > head.x;
     //wall/tails
-    inputs[3] = head.y < h-1; 
-    inputs[4] = head.y > 0;
-    inputs[5] = head.x < w-1;
-    inputs[6] = head.x > 0;
+    inputs[3] = head.y < h-1 && this.checkTail(0); 
+    inputs[4] = head.y > 0 && this.checkTail(1);
+    inputs[5] = head.x < w-1 && this.checkTail(2);
+    inputs[6] = head.x > 0 && this.checkTail(3);
     
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
