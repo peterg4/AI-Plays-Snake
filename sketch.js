@@ -14,10 +14,13 @@ var bestFitDisplay;
 var averageFitDisplay;
 var counter;
 var generationCount = 0;
+
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(600, 600).parent('canvas-container');
   counter = createP('Generation: 0')
+  counter.parent('data-container');
   bestFitDisplay = createP('Best Fitness: 0');
+  bestFitDisplay.parent('data-container');
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(24);
@@ -57,8 +60,9 @@ function draw() {
     nextGeneration();
     generationCount++;
     counter.html('Generation: '+ generationCount);
-    bestFitDisplay.html('Best Fitness: ' + bestFitness);
-    createP('Average Fitness: ' + averageFitness);
+    bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
+    createP('Average Fitness: ' + averageFitness.toFixed(2)).parent('data-container');
+
   }
 
   for (let snake of snakePopulation) {
