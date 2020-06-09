@@ -69,15 +69,15 @@ function draw() {
       bestLengthDisplay.html('Best Length: ' + bestLength);
     }
 
-    for (let snake of snakePopulation) {
+  //  for (let snake of snakePopulation) {
         noStroke();
-        fill(snake.r, snake.g, snake.b);
-        snake.show();
+        fill(snakePopulation[0].r, snakePopulation[0].g, snakePopulation[0].b);
+        snakePopulation[0].show();
         noStroke();
-        fill(snake.r, snake.g, snake.b);
-        rect(snake.food.x, snake.food.y, 1, 1);
+        fill(snakePopulation[0].r, snakePopulation[0].g, snakePopulation[0].b);
+        rect(snakePopulation[0].food.x, snakePopulation[0].food.y, 1, 1);
     }
-  }
+ // }
 
 
 }

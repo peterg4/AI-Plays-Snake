@@ -41,8 +41,10 @@ class NeuralNetwork {
         let values = tensor.dataSync().slice();
         for (let j = 0; j < values.length; j++) {
           if (random(1) < rate) {
+           // console.log(values);
             let w = values[j];
-            values[j] = w + random(-1,1);
+            values[j] += random(-.2,.2);
+            
           }
         }
         let newTensor = tf.tensor(values, shape);

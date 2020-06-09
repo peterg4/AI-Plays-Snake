@@ -17,7 +17,7 @@ function nextGeneration() {
 
 function pickOne() {
   let snake1 = savedSnakes[snakeCount-floor(random(1,60))];
-  let snake2 = savedSnakes[snakeCount-2];
+  let snake2 = savedSnakes[snakeCount-floor(random(1,2))];
  // console.log(savedSnakes[snakeCount-floor(random(1,30))]);
   let child = new Snake(snake1.brain);
   child.mutate();

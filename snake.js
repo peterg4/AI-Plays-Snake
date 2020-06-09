@@ -20,7 +20,7 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(8, floor(random(5,20)), 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(14, floor(random(10,16)), 4); //x,y head, x,y food, len
     }
   }
   
@@ -43,7 +43,7 @@ class Snake {
   }
 
   mutate() {
-    this.brain.mutate(0.10);
+    this.brain.mutate(0.50);
   }
 
   setVelocity(x, y) {
@@ -59,7 +59,7 @@ class Snake {
     if(this.prevDist > dist(head.x, head.y, this.food.x, this.food.y)) {
       this.score++;
     } else { 
-      this.score-=1.5;
+      this.score-=10;
     }
     this.prevDist = dist(head.x, head.y, this.food.x, this.food.y);
     this.body.shift();
@@ -148,7 +148,7 @@ class Snake {
     let inputs = [];
     let head = this.body[this.body.length-1].copy();
 
-    //food location
+    //food general location
     inputs[0] = this.food.y < head.y;
     inputs[1] = this.food.x < head.x;
     inputs[2] = this.food.x > head.x;
@@ -157,7 +157,14 @@ class Snake {
     inputs[4] = head.y > 0 && this.checkTail(1);
     inputs[5] = head.x < w-1 && this.checkTail(2);
     inputs[6] = head.x > 0 && this.checkTail(3);
-    inputs[7] = this.len;
+    //locational data
+    inputs[8] = w - head.x;
+    inputs[9] = h - head.y;
+    inputs[10] = head.x;
+    inputs[11] = head.y;
+    inputs[12] = this.food.x;
+    inputs[13] = this.food.y;
+
 
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
