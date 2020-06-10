@@ -52,13 +52,13 @@ function keyPressed() {
 }
 
 function changeSnake() {
-  if(snakePopulation[snakeSelector + 1].r != undefined )
-    snakeSelector += 1;
+  snakeSelector += 1;
+  snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1)
 }
 
 function downchangeSnake() {
-  if(snakePopulation[snakeSelector - 1].r != undefined )
-    snakeSelector -= 1;
+  snakeSelector -= 1;
+  snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1)
 }
 
 function draw() {
@@ -73,6 +73,7 @@ function draw() {
       snake.update();
       if(snake.endGame() || snake.lifespan <= 0 || snake.score < 0) {
         savedSnakes.push(snakePopulation.splice(k, 1)[0]);
+        snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1)
       }
       snake.eat();
       k++;
