@@ -80,7 +80,7 @@ class Snake {
   	let x = this.body[this.body.length-1].x;
     let y = this.body[this.body.length-1].y;
     if(x > w-1 || x < 0 || y > h-1 || y < 0) {
-      this.score-=30;
+      this.score-=1000;
        return true;
     }
     for(let i = 0; i < this.body.length-1; i++) {
@@ -110,7 +110,7 @@ class Snake {
       case 0: 
       for(let i = 0; i < this.body.length-1; i++) {
         part = this.body[i];
-        if(part!=head && head.x==part.x && head.y-1==part.y) {
+        if(part!=head && head.x==part.x && head.y+rez==part.y) {
           return false;
         }
       }
@@ -118,7 +118,7 @@ class Snake {
       case 1:
       for(let i = 0; i < this.body.length-1; i++) {
         part = this.body[i];
-        if(part!=head && head.x==part.x && head.y+1==part.y) {
+        if(part!=head && head.x==part.x && head.y-rez==part.y) {
           return false;
         }
       }
@@ -126,7 +126,7 @@ class Snake {
       case 2:
       for(let i = 0; i < this.body.length-1; i++) {
           part = this.body[i];
-        if(part!=head && head.y==part.y && head.x+1==part.x) {
+        if(part!=head && head.y==part.y && head.x+rez==part.x) {
           return false;
         }
       }
@@ -134,7 +134,7 @@ class Snake {
       case 3:
       for(let i = 0; i < this.body.length-1; i++) {
           part = this.body[i];
-        if(part!=head && head.y==part.y && head.x-1==part.x) {
+        if(part!=head && head.y==part.y && head.x-rez==part.x) {
           return false;
         }
       }
@@ -151,10 +151,10 @@ class Snake {
     inputs[1] = this.food.x < head.x;
     inputs[2] = this.food.x > head.x;
     //wall/tails
-    inputs[3] = head.y < h-rez && this.checkTail(0); 
-    inputs[4] = head.y > 0 && this.checkTail(1);
+    inputs[3] = head.y < h+rez && this.checkTail(0); 
+    inputs[4] = head.y > rez && this.checkTail(1);
     inputs[5] = head.x < w-rez && this.checkTail(2);
-    inputs[6] = head.x > 0 && this.checkTail(3);
+    inputs[6] = head.x > rez && this.checkTail(3);
     //locational data
     inputs[8] = w - head.x;
     inputs[9] = h - head.y;
