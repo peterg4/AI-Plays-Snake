@@ -36,8 +36,8 @@ function setup() {
   nextSnake.mousePressed(changeSnake);
   previousSnake.mousePressed(downchangeSnake);
 
-  w = floor(width / rez);
-  h = floor(height / rez);
+  w = floor(width);
+  h = floor(height);
   frameRate(24);
   tf.setBackend('cpu');
   for (let i = 0; i < snakeCount; i++) {
@@ -65,7 +65,7 @@ function downchangeSnake() {
 }
 
 function draw() {
-  scale(rez);
+  //scale(rez);
   background(255);
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
@@ -96,7 +96,7 @@ function draw() {
     currentSnake.show();
     noStroke();
     fill(currentSnake.r, currentSnake.g, currentSnake.b);
-    rect(currentSnake.food.x, currentSnake.food.y, 1, 1);
+    rect(currentSnake.food.x, currentSnake.food.y, rez, rez);
   }
 
 }

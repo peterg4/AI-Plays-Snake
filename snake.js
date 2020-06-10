@@ -25,8 +25,8 @@ class Snake {
   }
   
   foodLocation() {
-    let x = floor(random(w-1));
-    let y = floor(random(h-1));
+    let x = floor(random(w/rez-1))*rez;
+    let y = floor(random(h/rez-1))*rez;
     for(let i = 0; i < this.body.length-1; i++) {
       let part = this.body[i];
       if(part.x==x && part.y == y)
@@ -47,7 +47,7 @@ class Snake {
   }
 
   setVelocity(x, y) {
-    if(Math.abs(x - this.xVelocity) != 2 &&  Math.abs(y - this.yVelocity) != 2) {
+    if(Math.abs(x - this.xVelocity) != 2*rez &&  Math.abs(y - this.yVelocity) != 2*rez) {
       this.xVelocity = x;
       this.yVelocity = y;
     }
@@ -151,9 +151,9 @@ class Snake {
     inputs[1] = this.food.x < head.x;
     inputs[2] = this.food.x > head.x;
     //wall/tails
-    inputs[3] = head.y < h-1 && this.checkTail(0); 
+    inputs[3] = head.y < h-rez && this.checkTail(0); 
     inputs[4] = head.y > 0 && this.checkTail(1);
-    inputs[5] = head.x < w-1 && this.checkTail(2);
+    inputs[5] = head.x < w-rez && this.checkTail(2);
     inputs[6] = head.x > 0 && this.checkTail(3);
     //locational data
     inputs[8] = w - head.x;
@@ -167,18 +167,18 @@ class Snake {
     let output = this.brain.predict(inputs);
     let choice = Math.max(output[0], output[1], output[2], output[3]);
     switch(choice) {
-      case output[0]: this.setVelocity(-1, 0); break;
-      case output[1]: this.setVelocity(1, 0); break;
-      case output[2]: this.setVelocity(0, -1); break;
-      case output[3]: this.setVelocity(0, 1); break;
+      case output[0]: this.setVelocity(-rez, 0); break;
+      case output[1]: this.setVelocity(rez, 0); break;
+      case output[2]: this.setVelocity(0, -rez); break;
+      case output[3]: this.setVelocity(0, rez); break;
     }
   }
 
   show() {
   	for(let i = 0; i < this.body.length; i++) {
-      noStroke();
+      strokeWeight(1);
       fill(this.r, this.g, this.b);
-      rect(this.body[i].x, this.body[i].y, 1, 1)
+      rect(this.body[i].x, this.body[i].y, rez, rez)
     }
   }
 
