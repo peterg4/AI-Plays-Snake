@@ -28,10 +28,10 @@ function setup() {
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
   bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
   cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
-  nextSnake = createButton('next snake').parent('canvas-container');
   previousSnake = createButton('previous snake').parent('canvas-container');
+  nextSnake = createButton('next snake').parent('canvas-container');
   nextSnake.mousePressed(changeSnake);
-  previousSnake.mousePressed(changeSnake);
+  previousSnake.mousePressed(downchangeSnake);
 
   w = floor(width / rez);
   h = floor(height / rez);
@@ -54,6 +54,11 @@ function keyPressed() {
 function changeSnake() {
   if(snakePopulation[snakeSelector + 1].r != undefined )
     snakeSelector += 1;
+}
+
+function downchangeSnake() {
+  if(snakePopulation[snakeSelector - 1].r != undefined )
+    snakeSelector -= 1;
 }
 
 function draw() {
