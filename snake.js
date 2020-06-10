@@ -176,6 +176,7 @@ class Snake {
 
   show() {
   	for(let i = 0; i < this.body.length; i++) {
+      stroke(51)
       strokeWeight(1);
       fill(this.r, this.g, this.b);
       rect(this.body[i].x, this.body[i].y, rez, rez)
