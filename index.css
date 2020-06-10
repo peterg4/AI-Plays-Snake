@@ -7,5 +7,7 @@ body{
   height: calc(100% - 100px);
 }
 #canvas-container{
-  border: solid 1px black;
+}
+#defaultCanvas0{
+  border: solid 2px black;
 }
