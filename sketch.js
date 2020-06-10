@@ -20,6 +20,7 @@ let cycleCount = 1;
 let cycleSlider;
 let previousSnake;
 let nextSnake;
+var snakeSelector = 0;
 
 function setup() {
   createCanvas(400, 400).parent('canvas-container');
@@ -27,8 +28,10 @@ function setup() {
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
   bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
   cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
-  nextSnake = createButton('next snake').parent('canvas-container').mousePressed(changeSnake(1));
-  previousSnake = createButton('previous snake').parent('canvas-container').mousePressed(changeSnake(-1));
+  nextSnake = createButton('next snake').parent('canvas-container');
+  previousSnake = createButton('previous snake').parent('canvas-container');
+  nextSnake.mousePressed(changeSnake);
+  previousSnake.mousePressed(changeSnake);
 
   w = floor(width / rez);
   h = floor(height / rez);
@@ -48,8 +51,9 @@ function keyPressed() {
   }
 }
 
-function changeSnake(i) {
-  
+function changeSnake() {
+  if(snakePopulation[snakeSelector + 1].r != undefined )
+    snakeSelector += 1;
 }
 
 function draw() {
@@ -79,11 +83,11 @@ function draw() {
 
   //  for (let snake of snakePopulation) {
         noStroke();
-        fill(snakePopulation[0].r, snakePopulation[0].g, snakePopulation[0].b);
-        snakePopulation[0].show();
+        fill(snakePopulation[snakeSelector].r, snakePopulation[snakeSelector].g, snakePopulation[snakeSelector].b);
+        snakePopulation[snakeSelector].show();
         noStroke();
-        fill(snakePopulation[0].r, snakePopulation[0].g, snakePopulation[0].b);
-        rect(snakePopulation[0].food.x, snakePopulation[0].food.y, 1, 1);
+        fill(snakePopulation[snakeSelector].r, snakePopulation[snakeSelector].g, snakePopulation[snakeSelector].b);
+        rect(snakePopulation[snakeSelector].food.x, snakePopulation[snakeSelector].food.y, 1, 1);
     }
  // }
 
