@@ -13,6 +13,7 @@ let bestLength = 0;
 var bestLengthDisplay;
 var bestFitDisplay;
 var averageFitDisplay;
+var generationCountDisplay;
 var counter;
 var generationCount = 0;
 
@@ -21,10 +22,12 @@ let cycleSlider;
 let previousSnake;
 let nextSnake;
 var snakeSelector = 0;
+let currentSnake;
 
 function setup() {
   createCanvas(400, 400).parent('canvas-container');
   counter = createP('Generation: 0').parent('canvas-container');
+  generationCountDisplay = createP('Snakes alive: 300').parent('canvas-container');
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
   bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
   cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
@@ -67,13 +70,12 @@ function draw() {
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
     for (let snake of snakePopulation) {
-      
       snake.think();
-      
       snake.update();
       if(snake.endGame() || snake.lifespan <= 0 || snake.score < 0) {
         savedSnakes.push(snakePopulation.splice(k, 1)[0]);
-        snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1)
+        snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1);
+        generationCountDisplay.html('Snakes alive: ' + snakePopulation.length);
       }
       snake.eat();
       k++;
@@ -85,17 +87,16 @@ function draw() {
       counter.html('Generation: '+ generationCount);
       bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
       bestLengthDisplay.html('Best Length: ' + bestLength);
+      generationCountDisplay.html('Snakes alive: ' + snakePopulation.length);
     }
 
-  //  for (let snake of snakePopulation) {
-        noStroke();
-        fill(snakePopulation[snakeSelector].r, snakePopulation[snakeSelector].g, snakePopulation[snakeSelector].b);
-        snakePopulation[snakeSelector].show();
-        noStroke();
-        fill(snakePopulation[snakeSelector].r, snakePopulation[snakeSelector].g, snakePopulation[snakeSelector].b);
-        rect(snakePopulation[snakeSelector].food.x, snakePopulation[snakeSelector].food.y, 1, 1);
-    }
- // }
-
+    currentSnake = snakePopulation[snakeSelector];
+    noStroke();
+    fill(currentSnake.r, currentSnake.g, currentSnake.b);
+    currentSnake.show();
+    noStroke();
+    fill(currentSnake.r, currentSnake.g, currentSnake.b);
+    rect(currentSnake.food.x, currentSnake.food.y, 1, 1);
+  }
 
 }
