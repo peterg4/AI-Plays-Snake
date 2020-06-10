@@ -54,7 +54,7 @@ function draw() {
       snake.think();
       
       snake.update();
-      if(snake.endGame() || snake.age > snake.lifespan || snake.score < 0) {
+      if(snake.endGame() || snake.lifespan <= 0 || snake.score < 0) {
         savedSnakes.push(snakePopulation.splice(k, 1)[0]);
       }
       snake.eat();

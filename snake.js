@@ -14,7 +14,7 @@ class Snake {
 
     this.food = this.foodLocation();
 
-    this.lifespan = 200;
+    this.lifespan = 400;
     this.age = 0;
     this.score = 0;
     if (brain) {
@@ -54,13 +54,11 @@ class Snake {
   }
   
   update() {
-    this.age++;
+    this.lifespan--;
     let head = this.body[this.body.length-1].copy();
     if(this.prevDist > dist(head.x, head.y, this.food.x, this.food.y)) {
       this.score++;
-    } else { 
-      this.score-=10;
-    }
+    } 
     this.prevDist = dist(head.x, head.y, this.food.x, this.food.y);
     this.body.shift();
     head.x += this.xVelocity;
@@ -72,7 +70,7 @@ class Snake {
     this.food = this.foodLocation();
     this.prevDist = 1000;
     this.score+=1000;
-    this.lifespan+=10000;
+    this.lifespan=400;
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
