@@ -3,6 +3,8 @@ body{
   display: flex;
   background-color: #121212;
   color: white;
+  justify-content: center;
+  margin: 20px auto;
 }
 #chart-container{
   width: calc(100% - 2px);
@@ -28,7 +30,7 @@ body{
   line-height: 25px;
 }
 .bounding-box-chart{
-  margin-left: 75px;
+  margin-left: 30px;
   width: calc(100% - 550px);
   height: calc(100% - 100px);
 }

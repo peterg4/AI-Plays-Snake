@@ -23,6 +23,7 @@ var chart = new CanvasJS.Chart("chart-container", {
     includeZero: false
   },      
   data: [{
+    markerType: "none",
     lineThickness: 4,
     color: "#61DBFB",
     type: "spline",
