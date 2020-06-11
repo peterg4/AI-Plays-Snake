@@ -6,13 +6,10 @@ var chart = new CanvasJS.Chart("chart-container", {
   backgroundColor: "#101111",
   theme: "light2",
   title :{
-    fontFamily: "'Open Sans', sans-serif",
-    text: "Average Fitness by Generation",
+    text: " ",
     fontSize: 18,
     margin: 25,
     padding: 4,
-    fontColor: "white",
-    fontWeight: "lighter"
   },
   axisX: {
     interval: interval,
@@ -27,7 +24,7 @@ var chart = new CanvasJS.Chart("chart-container", {
   },      
   data: [{
     lineThickness: 4,
-    color: "#af2f81",
+    color: "#61DBFB",
     type: "spline",
     dataPoints: dps
   }]

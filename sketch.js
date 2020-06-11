@@ -66,7 +66,7 @@ function downchangeSnake() {
 }
 
 function draw() {
-  background(255);
+  background(16);
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
     for (let snake of snakePopulation) {
