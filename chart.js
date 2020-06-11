@@ -1,5 +1,4 @@
 var dps = [{x: 0, y:0}]; // dataPoints
-var interval = 1;
 var chart = new CanvasJS.Chart("chart-container", {
   animationEnabled: true,
   zoomEnabled:true,
@@ -12,7 +11,6 @@ var chart = new CanvasJS.Chart("chart-container", {
     padding: 4,
   },
   axisX: {
-    interval: interval,
     tickColor: '#101010',
     gridColor: '#101010',
     lineColor: '#101010'
@@ -38,9 +36,6 @@ var dataLength = 500; // number of dataPoints visible at any point
 var updateChart = function (count) {
 
   count = count || 1;
-  if(count > 11) {
-    interval = null;
-  }
 
   if (dps.length > dataLength) {
     dps.shift();

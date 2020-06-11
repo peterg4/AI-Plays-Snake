@@ -27,7 +27,7 @@ let currentSnake;
 function setup() {
   createCanvas(400, 400).parent('canvas-container');
   chart.render();
-  counter = createP('Generation: 0').parent('canvas-container');
+  counter = createP('Generation: 0').parent('sketch-head');
   generationCountDisplay = createP('Snakes alive: 300').parent('canvas-container');
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
   bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
