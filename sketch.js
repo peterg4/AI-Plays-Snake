@@ -1,4 +1,4 @@
-const snakeCount = 300;
+const snakeCount = 30;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -26,6 +26,7 @@ let currentSnake;
 
 function setup() {
   createCanvas(400, 400).parent('canvas-container');
+  chart.render();
   counter = createP('Generation: 0').parent('canvas-container');
   generationCountDisplay = createP('Snakes alive: 300').parent('canvas-container');
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
