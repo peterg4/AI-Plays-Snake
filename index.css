@@ -1,5 +1,6 @@
 body{
   display: flex;
+  background-color: #121212;
 }
 #chart-container{
   margin-left: 75px;
@@ -9,5 +10,8 @@ body{
 #canvas-container{
 }
 #defaultCanvas0{
-  border: solid 2px black;
+  border: 1px solid #616467;
+}
+.canvasjs-chart-canvas {
+  border: 1px solid #616467;
 }

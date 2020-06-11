@@ -1,4 +1,4 @@
-const snakeCount = 30;
+const snakeCount = 300;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
