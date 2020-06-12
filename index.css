@@ -205,3 +205,12 @@ input[type=range]::-moz-range-thumb {
   }
 
 }
+#cover{
+  background-color: #121212;
+  width: 100vw;
+  height:100vh;
+  position: absolute;
+  top:0;
+  right:0;
+  z-index: 100;
+}

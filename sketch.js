@@ -44,6 +44,7 @@ function setup() {
   for (let i = 0; i < snakeCount; i++) {
     snakePopulation[i] = new Snake();
   }
+  document.getElementById('cover').style.display = 'none';
 }
 
 function keyPressed() {
