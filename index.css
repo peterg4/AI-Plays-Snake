@@ -1,10 +1,9 @@
 body{
   font-family: 'Open Sans', sans-serif;
-  display: flex;
   background-color: #121212;
   color: white;
   justify-content: center;
-  margin: 20px auto;
+  margin: 25px auto;
 }
 #chart-container{
   width: calc(100% - 2px);
@@ -19,7 +18,7 @@ body{
 .canvasjs-chart-credit{
   display: none;
 }
-.canvas-heading {
+.canvas-heading{
   position: relative;
   font-family: 'Open Sans', sans-serif;
   padding: 10px 15px;
@@ -35,11 +34,16 @@ body{
 }
 .bounding-box-chart{
   margin-left: 30px;
-  width: calc(100% - 550px);
-  height: calc(100% - 100px);
+  width: calc(100% - 425px);
+  height: 400px;
 }
 #gen-counter{
   position: absolute;
   right: 19px;
   top: 10px;
+}
+.row{
+  display: flex;
+  margin: auto;
+  width: calc(100% - 50px) ;
 }

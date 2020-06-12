@@ -11,16 +11,22 @@
     <title>TensorFlow neuroevolution with Snake</title>
   </head>
   <body>
-    <div class="bounding-box">
-    <div id="sketch-head" class="canvas-heading"></div>
-    <div id="canvas-container"></div>
+
+    <div class="row">
+      <div class="bounding-box">
+        <div id="sketch-head" class="canvas-heading"></div>
+        <div id="canvas-container"></div>
+      </div>
+
+      <div class="bounding-box-chart">
+        <div class="canvas-heading">
+          Average Fitness by Generation
+        </div>
+        <div id="chart-container"></div>
+      </div>
     </div>
-    <div class="bounding-box-chart">
-    <div class="canvas-heading">
-      Average Fitness by Generation
-    </div>
-    <div id="chart-container"></div>
-    </div>
+
+    <div class="bestof-counter"> TExt </div>
     <script src="nn.js"></script>
     <script src="snake.js"></script>
     <script src="ga.js"></script>
