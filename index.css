@@ -19,7 +19,8 @@ body{
 .canvasjs-chart-credit{
   display: none;
 }
-.canvas-heading{
+.canvas-heading {
+  position: relative;
   font-family: 'Open Sans', sans-serif;
   padding: 10px 15px;
   background-color: #272727;
@@ -36,4 +37,9 @@ body{
   margin-left: 30px;
   width: calc(100% - 550px);
   height: calc(100% - 100px);
+}
+#gen-counter{
+  position: absolute;
+  right: 19px;
+  top: 10px;
 }

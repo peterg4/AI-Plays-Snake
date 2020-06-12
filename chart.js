@@ -1,4 +1,4 @@
-var dps = [{x: 0, y:0}]; // dataPoints
+var dps = [{x: 0, y:-1000}]; // dataPoints
 var chart = new CanvasJS.Chart("chart-container", {
   animationEnabled: true,
   zoomEnabled:true,
@@ -22,7 +22,7 @@ var chart = new CanvasJS.Chart("chart-container", {
   },      
   data: [{
     markerType: "none",
-    lineThickness: 4,
+    lineThickness: 3,
     color: "#61DBFB",
     type: "spline",
     dataPoints: dps

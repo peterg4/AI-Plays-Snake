@@ -1,4 +1,4 @@
-const snakeCount = 300;
+const snakeCount = 70;
 let snakePopulation = [];
 let savedSnakes = [];
 let snake;
@@ -28,7 +28,7 @@ function setup() {
   createCanvas(400, 400).parent('canvas-container');
   chart.render();
   counter = createP('Generation: 0').parent('sketch-head');
-  generationCountDisplay = createP('Snakes alive: 300').parent('canvas-container');
+  generationCountDisplay = createP('300').parent('sketch-head').id('gen-counter');
   bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
   bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
   cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
@@ -75,7 +75,7 @@ function draw() {
       if(snake.endGame() || snake.lifespan <= 0 || snake.score < 0) {
         savedSnakes.push(snakePopulation.splice(k, 1)[0]);
         snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1);
-        generationCountDisplay.html('Snakes alive: ' + snakePopulation.length);
+        generationCountDisplay.html(snakePopulation.length);
       }
       snake.eat();
       k++;
@@ -87,7 +87,7 @@ function draw() {
       counter.html('Generation: '+ generationCount);
       bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
       bestLengthDisplay.html('Best Length: ' + bestLength);
-      generationCountDisplay.html('Snakes alive: ' + snakePopulation.length);
+      generationCountDisplay.html(snakePopulation.length);
     }
 
     currentSnake = snakePopulation[snakeSelector];
