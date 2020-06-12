@@ -110,8 +110,57 @@ button:hover{
 }
 #button-container{
   width: fit-content;
-  margin: 10px auto;
+  margin: 25px auto;
 }
 .fa{
   vertical-align: -1px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background: #61DBFB;
+  height: 2px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  -moz-appearance: none;
+  background: #61DBFB;
+  height: 2px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid #61DBFB;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  max-width: 80px;
+  position: relative;
+  bottom: 10px;
+  background-color: #1d1c25;
+  cursor: pointer;
+
+  -webkit-transition: border 1000ms ease;
+  transition: border 1000ms ease;
+}
+
+input[type=range]::-moz-range-thumb {
+  -moz-appearance: none;
+  border: 2px solid #61DBFB;
+  border-radius: 50%;
+  max-width: 80px;
+  position: relative;
+  bottom: 10px;
+  background-color: #1d1c25;
+  cursor: pointer;
+  -moz-transition: border 1000ms ease;
+  transition: border 1000ms ease;
 }
