@@ -80,3 +80,38 @@ body{
 #row2{
   margin-top: 24px;
 }
+#speed-control{
+  width: 75%;
+  margin: 25px auto;
+  display: block;
+}
+#speed-control::range-track{
+  background-color: black;
+}
+button{   
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-family: 'Open-sans', sans-serif;
+  color: #fff;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+}
+button:hover{
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+#button-container{
+  width: fit-content;
+  margin: 10px auto;
+}
+.fa{
+  vertical-align: -1px;
+}

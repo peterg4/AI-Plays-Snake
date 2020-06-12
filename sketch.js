@@ -31,9 +31,9 @@ function setup() {
   generationCountDisplay = createP('300').parent('sketch-head').id('gen-counter');
   bestFitDisplay = createP('0').parent('best-fit').class('best-counter').id('best-fit');
   bestLengthDisplay = createP('0').parent('best-length').class('best-counter').id('best-len');
-  cycleSlider = createSlider(1,50, 1, 1).parent('control-panel');
-  previousSnake = createButton('previous snake').parent('control-panel');
-  nextSnake = createButton('next snake').parent('control-panel');
+  cycleSlider = createSlider(1,50, 1, 1).parent('control-panel').id('speed-control');
+  previousSnake = createButton('<i class="fa fa-chevron-left" aria-hidden="true"></i> Previous Snake').parent('button-container');
+  nextSnake = createButton('Next Snake <i class="fa fa-chevron-right" aria-hidden="true"></i>').parent('button-container');
   nextSnake.mousePressed(changeSnake);
   previousSnake.mousePressed(downchangeSnake);
 
