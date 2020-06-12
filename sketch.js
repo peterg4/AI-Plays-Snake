@@ -29,11 +29,11 @@ function setup() {
   chart.render();
   counter = createP('Generation: 0').parent('sketch-head');
   generationCountDisplay = createP('300').parent('sketch-head').id('gen-counter');
-  bestFitDisplay = createP('Best Fitness: 0').parent('canvas-container');
-  bestLengthDisplay = createP('Best Length: 0').parent('canvas-container')
-  cycleSlider = createSlider(1,50, 1, 1).parent('canvas-container');
-  previousSnake = createButton('previous snake').parent('canvas-container');
-  nextSnake = createButton('next snake').parent('canvas-container');
+  bestFitDisplay = createP('0').parent('best-fit').id('best-fit-counter');
+  bestLengthDisplay = createP('0').parent('best-length').id('best-length-counter')
+  cycleSlider = createSlider(1,50, 1, 1).parent('control-panel');
+  previousSnake = createButton('previous snake').parent('control-panel');
+  nextSnake = createButton('next snake').parent('control-panel');
   nextSnake.mousePressed(changeSnake);
   previousSnake.mousePressed(downchangeSnake);
 
@@ -66,7 +66,7 @@ function downchangeSnake() {
 }
 
 function draw() {
-  background(16);
+  background(16, 17, 17);
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
     for (let snake of snakePopulation) {
@@ -85,8 +85,8 @@ function draw() {
       nextGeneration();
       generationCount++;
       counter.html('Generation: '+ generationCount);
-      bestFitDisplay.html('Best Fitness: ' + bestFitness.toFixed(2));
-      bestLengthDisplay.html('Best Length: ' + bestLength);
+      bestFitDisplay.html(bestFitness.toFixed(0));
+      bestLengthDisplay.html(bestLength);
       generationCountDisplay.html(snakePopulation.length);
     }
 

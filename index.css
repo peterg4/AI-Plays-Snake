@@ -33,7 +33,7 @@ body{
   margin: 0px;
 }
 .bounding-box-chart{
-  margin-left: 30px;
+  margin-left: 25px;
   width: calc(100% - 425px);
   height: 400px;
 }
@@ -46,4 +46,37 @@ body{
   display: flex;
   margin: auto;
   width: calc(100% - 50px) ;
+}
+.bestof-counter{
+  position: relative;
+  border: 1px solid #616467;
+  margin-left: 25px;
+  width: calc(50% - 227px);
+  height: 400px;
+  background-color: #101111;
+}
+.bestof-counter .canvas-heading {
+  border: 0px;
+  border-bottom: 1px solid #616467;;
+}
+#best-fit-counter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 5vw;
+}
+#best-length-counter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 5vw;
+}
+#control-panel{
+  width: 402px;
+  margin-left: 0px;
+}
+#row2{
+  margin-top: 24px;
 }
