@@ -170,3 +170,28 @@ input[type=range]::-moz-range-thumb {
   -moz-transition: border 1000ms ease;
   transition: border 1000ms ease;
 }
+
+@media screen and (max-width: 1050px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    width: 100%;
+  }
+  .bestof-counter {
+    margin-left: auto;
+    margin-right: auto;
+    width: 402px;
+    margin-bottom: 8px;
+  }
+  #control-panel{
+    margin-left: auto;
+  }
+  .bounding-box-chart {
+    margin-left: 0px;
+    width: 402px;
+    height: 400px;
+    margin-bottom: 31px;
+  }
+}
