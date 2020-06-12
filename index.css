@@ -180,18 +180,28 @@ input[type=range]::-moz-range-thumb {
     width: 100%;
   }
   .bestof-counter {
-    margin-left: auto;
-    margin-right: auto;
     width: 402px;
-    margin-bottom: 8px;
-  }
-  #control-panel{
-    margin-left: auto;
+    margin-bottom: 25px;
   }
   .bounding-box-chart {
-    margin-left: 0px;
+  /*  margin-left: 0px;*/
     width: 402px;
     height: 400px;
     margin-bottom: 31px;
   }
+}
+
+@media screen and (max-width: 850px) {
+  .bounding-box-chart {
+      margin-left: 0px;
+      width: 402px;
+      height: 400px;
+      margin-bottom: 31px;
+    }
+  .bestof-counter {
+    width: 402px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+  }
+
 }
