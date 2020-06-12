@@ -29,8 +29,8 @@ function setup() {
   chart.render();
   counter = createP('Generation: 0').parent('sketch-head');
   generationCountDisplay = createP('300').parent('sketch-head').id('gen-counter');
-  bestFitDisplay = createP('0').parent('best-fit').id('best-fit-counter');
-  bestLengthDisplay = createP('0').parent('best-length').id('best-length-counter')
+  bestFitDisplay = createP('0').parent('best-fit').class('best-counter').id('best-fit');
+  bestLengthDisplay = createP('0').parent('best-length').class('best-counter').id('best-len');
   cycleSlider = createSlider(1,50, 1, 1).parent('control-panel');
   previousSnake = createButton('previous snake').parent('control-panel');
   nextSnake = createButton('next snake').parent('control-panel');

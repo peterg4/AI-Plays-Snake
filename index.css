@@ -45,7 +45,7 @@ body{
 .row{
   display: flex;
   margin: auto;
-  width: calc(100% - 50px) ;
+  width: calc(100% - 50px);
 }
 .bestof-counter{
   position: relative;
@@ -59,19 +59,19 @@ body{
   border: 0px;
   border-bottom: 1px solid #616467;;
 }
-#best-fit-counter{
+.best-counter{
   position: absolute;
-  top: 50%;
+  top: calc(50% + 23px);
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
   font-size: 5vw;
+  margin: 0;
 }
-#best-length-counter{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  font-size: 5vw;
+#best-len{
+  color: #1ed760;
+}
+#best-fit{
+  color: #af2896;
 }
 #control-panel{
   width: 402px;
