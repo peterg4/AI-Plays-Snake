@@ -17,6 +17,7 @@ var generationCountDisplay;
 var counter;
 var generationCount = 0;
 
+let playing = 1;
 let cycleCount = 1;
 let cycleSlider;
 let previousSnake;
@@ -53,6 +54,19 @@ function keyPressed() {
     case RIGHT_ARROW: snake.setVelocity(1, 0); break;
     case UP_ARROW: snake.setVelocity(0, -1); break;
     case DOWN_ARROW: snake.setVelocity(0, 1); break;
+    case 65: snake.setVelocity(-1, 0); break;
+    case 68: snake.setVelocity(1, 0); break;
+    case 87: snake.setVelocity(0, -1); break;
+    case 83: snake.setVelocity(0, 1); break; 
+    case 32: 
+      if(playing) {
+        playing = false;
+        noLoop()
+      } else {
+        playing = true;
+        loop()
+      }
+      break;
   }
 }
 
