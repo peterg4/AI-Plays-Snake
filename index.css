@@ -118,6 +118,22 @@ button:focus{
   width: fit-content;
   margin: 25px auto;
 }
+#io-container{
+  width: fit-content;
+  margin: 25px auto;
+}
+input[type="file"] {
+  display: block;
+  width: 45%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+label{
+  font-size: 14px;
+  text-align: center;
+  margin: 5px auto;
+  display: block;
+}
 .fa{
   vertical-align: -1px;
 }
