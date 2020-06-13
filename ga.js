@@ -10,7 +10,8 @@ function nextGeneration() {
     snakePopulation[i] = pickOne();
   }
   for (let i = 0; i < snakeCount; i++) {
-    savedSnakes[i].dispose();
+    if(savedSnakes[i] != bestSnake)
+      savedSnakes[i].dispose();
   }
   savedSnakes = [];
 }
@@ -28,8 +29,10 @@ function getAverageFit(){
     averageFitness += savedSnakes[i].score;
     if(savedSnakes[i].score > bestFitness)
       bestFitness = savedSnakes[i].score;
-    if(savedSnakes[i].len > bestLength)
+    if(savedSnakes[i].len > bestLength){
       bestLength = savedSnakes[i].len;
+      bestSnake = savedSnakes[i];
+    }
   }
   averageFitness/=snakeCount;
 }

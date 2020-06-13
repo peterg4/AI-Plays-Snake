@@ -1,11 +1,14 @@
-const snakeCount = 300;
+var snakeCount = 300;
 let snakePopulation = [];
 let savedSnakes = [];
+let bestSnake;
 let snake;
+
 let rez = 20;
 let food;
 let w;
 let h;
+
 let averageFitness = 0;
 let bestFitness = 0;
 let bestLength = 0;
@@ -17,11 +20,19 @@ var generationCountDisplay;
 var counter;
 var generationCount = 0;
 
-let playing = 1;
+let playable = false;
+
+let playing = true;
 let cycleCount = 1;
 let cycleSlider;
 let previousSnake;
 let nextSnake;
+
+let saveBest;
+let uploadSnake;
+let loadedSnake;
+let loaded = false;
+
 var snakeSelector = 0;
 let currentSnake;
 
@@ -36,7 +47,11 @@ function setup() {
   previousSnake = createButton('<i class="fa fa-chevron-left" aria-hidden="true"></i> Previous Snake').parent('button-container');
   nextSnake = createButton('Next Snake <i class="fa fa-chevron-right" aria-hidden="true"></i>').parent('button-container');
   nextSnake.mousePressed(changeSnake);
+  saveBest = createButton('Save Snake').parent('control-panel');
+  saveBest.mousePressed(saveSnake);
   previousSnake.mousePressed(downchangeSnake);
+  uploadSnake = createButton('Load Snake').parent('control-panel');
+  uploadSnake.mousePressed(loadSnake);
 
   w = floor(width);
   h = floor(height);
@@ -80,8 +95,36 @@ function downchangeSnake() {
   snakeSelector = constrain(snakeSelector, 0, snakePopulation.length-1)
 }
 
+function saveSnake() {
+  bestSnake.brain.download();
+}
+
+function loadSnake() {
+  loadedSnake = new Snake();
+  loadedSnake.brain.upload();
+  loaded = true;
+}
+
 function draw() {
   background(16, 17, 17);
+  if(loaded) {
+    loadedSnake.think();
+    loadedSnake.update();
+    if(loadedSnake.endGame() || loadedSnake.lifespan <= 0 || loadedSnake.score < 0) {
+      console.log("dead loaded snake");
+      loaded = false;
+    }
+    if(loaded) {
+      loadedSnake.eat();
+      noStroke();
+      fill(loadedSnake.r, loadedSnake.g, loadedSnake.b);
+      loadedSnake.show();
+      noStroke();
+      fill(loadedSnake.r, loadedSnake.g, loadedSnake.b);
+      rect(loadedSnake.food.x, loadedSnake.food.y, rez, rez);
+    }
+    return;
+  }
   for(let c = 0; c < cycleSlider.value(); c++) {
     let k = 0;
     for (let snake of snakePopulation) {
@@ -113,5 +156,4 @@ function draw() {
     fill(currentSnake.r, currentSnake.g, currentSnake.b);
     rect(currentSnake.food.x, currentSnake.food.y, rez, rez);
   }
-
 }

@@ -57,6 +57,18 @@ class NeuralNetwork {
     this.model.dispose();
   }
 
+
+  async download() {
+    await this.model.save('downloads://bestSnake');
+  }
+
+  async upload() {
+    const jsonUpload = document.getElementById('json-upload');
+    const weightsUpload = document.getElementById('weights-upload');
+    const lmodel = await tf.loadLayersModel(tf.io.browserFiles([jsonUpload.files[0], weightsUpload.files[0]]));
+    this.model = lmodel;
+  }
+
   predict(inputs) {
     return tf.tidy(() => {
       const xs = tf.tensor2d([inputs]);
