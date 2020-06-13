@@ -7,7 +7,7 @@ class Snake {
     this.yVelocity = 0;
     this.len = 1;
     this.grow();
-    this.prevDist = 10000;
+    this.prevDist = Infinity;
     this.r = floor(random(255));
     this.g = floor(random(255));
     this.b = floor(random(255));
@@ -20,7 +20,7 @@ class Snake {
     if (brain) {
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(14, floor(random(10,16)), 4); //x,y head, x,y food, len
+      this.brain = new NeuralNetwork(14, floor(random(10,16)), 4);
     }
   }
   
