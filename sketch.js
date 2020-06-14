@@ -1,4 +1,4 @@
-var snakeCount = 300;
+const snakeCount = 300;
 let snakePopulation = [];
 let savedSnakes = [];
 let bestSnake;
