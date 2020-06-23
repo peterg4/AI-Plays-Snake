@@ -17,4 +17,5 @@ https://peterg4.github.io/AI-Plays-Snake/
 To see a quick demo of a trained snake, you can upload the provided files and press the load snake button
 
 [Snake Brain](bestSnake.json)
+
 [Snake Weights](bestSnake.weights.bin)
